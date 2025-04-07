@@ -2,23 +2,22 @@ import os
 
 import toml
 from langchain_core.messages import HumanMessage
-from langchain_openai import AzureChatOpenAI
+from langchain_openai import ChatOpenAI
 
 # 读取 TOML 文件
 with open('/Users/gmy/Documents/experimentProjects/OpenManus/config/config.toml', 'r') as file:
     data = toml.load(file)
 
-os.environ["AZURE_OPENAI_API_KEY"] = data["llm"]["api_key"]
-
-llm = AzureChatOpenAI(
-    azure_endpoint=data["llm"]["endpoint"],
-    azure_deployment=data["llm"]["deployment"],
-    openai_api_version=data["llm"]["api_version"],
+chatLlm = ChatOpenAI(
+    model=data["llm"]["model"],
+    base_url=data["llm"]["base_url"],
+    api_key=data["llm"]["api_key"]
 )
 
-def chat(tag_start,tag_end,chatLLm, chat_history):
+
+def chat(tag_start, tag_end, chatLLm, chat_history):
     while True:
-        user_input = input(f"{tag_start}: ".replace("平台","用户"))
+        user_input = input(f"{tag_start}: ".replace("平台", "用户"))
         if user_input.lower() == "exit":
             print("感谢使用，再见！")
             break

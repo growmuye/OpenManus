@@ -1,7 +1,7 @@
 from langchain_core.messages import SystemMessage, HumanMessage
 
 from app.tool.base import BaseTool
-from app.util.LlmUtil import llm
+from app.util.LlmUtil import chatLlm
 
 
 class LiepinCheckRes(BaseTool):
@@ -85,7 +85,7 @@ class LiepinCheckRes(BaseTool):
 
 以下为简历信息：
 {resumeInfo}""")]
-        response = llm.invoke(chat_history1)
+        response = chatLlm.invoke(chat_history1)
         res = response.content
         print(f"\033[94m【子流程-检查简历】平台: {res}\033[0m")
         return res

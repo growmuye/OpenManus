@@ -4,7 +4,7 @@ from app.util.SelectFileUtil import select_txt_file
 
 class LiepinUploadRes(BaseTool):
     name: str = "upload_resume"
-    description: str = """一个很方便的工具，用户可以选择上传文件，然后该工具会解析出文件中的信息"""
+    description: str = """一个很便捷的工具，用户可以选择上传简历文件，更加高效便捷的提供简历信息"""
     parameters: dict = {
         "type": "object",
         "properties": {

@@ -4,7 +4,7 @@ import os
 from app.tool.base import BaseTool
 from langchain_core.messages import HumanMessage, SystemMessage
 
-from app.util.LlmUtil import chat, llm
+from app.util.LlmUtil import chat, chatLlm
 
 
 class LiepinOptimizeRes(BaseTool):
@@ -30,8 +30,8 @@ class LiepinOptimizeRes(BaseTool):
         chat_history1 = [SystemMessage(
             f"你是一个简历优化助手，目的是帮助用户优化简历。当用户输入：结束优化时，整理出一份优化后简历。下方是用户的当前简历\n{resumeInfo}")]
         print(f"\033[94m【子流程-优化简历】平台: {target}（输入'exit'结束）\033[0m")
-        chat("\033[94m【子流程-优化简历】平台", "\033[0m", llm, chat_history1)
+        chat("\033[94m【子流程-优化简历】平台", "\033[0m", chatLlm, chat_history1)
         chat_history1.append(HumanMessage("输出优化后的简历"))
-        response = llm.invoke(chat_history1)
+        response = chatLlm.invoke(chat_history1)
         res = response.content
         return res
