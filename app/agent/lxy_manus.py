@@ -4,9 +4,10 @@ from app.agent import ToolCallAgent
 from app.config import config
 from app.prompt.manus import SYSTEM_PROMPT, NEXT_STEP_PROMPT
 from app.tool import Terminate, ToolCollection, StrReplaceEditor
+from app.tool.lxy_search_res import LxySearchRes
 
 
-class LiepinManus(ToolCallAgent):
+class LxyManus(ToolCallAgent):
     """
     A versatile general-purpose agent that uses planning to solve various tasks.
 
@@ -24,11 +25,11 @@ class LiepinManus(ToolCallAgent):
     next_step_prompt: str = NEXT_STEP_PROMPT
 
     max_observe: int = 600000
-    max_steps: int = 50
+    max_steps: int = 10
 
     # Add general-purpose tools to the tool collection
     available_tools: ToolCollection = Field(
         default_factory=lambda: ToolCollection(
-            LiepinUploadRes(),  StrReplaceEditor(),Terminate()
+            LxySearchRes(), Terminate()
         )
     )
