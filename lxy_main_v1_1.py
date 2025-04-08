@@ -1,11 +1,11 @@
 import asyncio
 
-from app.agent.lxy_manus import LxyManus
+from app.agent.lxy_manus import LxyManus_v1_1
 from app.logger import logger
 
 
 async def main():
-    agent = LxyManus()
+    agent = LxyManus_v1_1()
     try:
         # 从文件中读取 prompt
         file_path = "doc/招聘JD.txt"  # 替换为你的文件路径

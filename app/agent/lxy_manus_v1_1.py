@@ -7,7 +7,7 @@ from app.tool import Terminate, ToolCollection, StrReplaceEditor
 from app.tool.lxy_search_res import LxySearchRes
 
 
-class LxyManus(ToolCallAgent):
+class LxyManus_v1_1(ToolCallAgent):
     """
     A versatile general-purpose agent that uses planning to solve various tasks.
 
@@ -16,7 +16,7 @@ class LxyManus(ToolCallAgent):
     to handle a wide range of user requests.
     """
 
-    name: str = "LxyManus"
+    name: str = "LxyManus v1.1"
     description: str = (
         "一个多功能代理，可以使用多种工具解决各种任务。"
     )
