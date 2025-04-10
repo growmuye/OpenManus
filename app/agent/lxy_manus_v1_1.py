@@ -2,9 +2,10 @@ from pydantic import Field
 
 from app.agent import ToolCallAgent
 from app.config import config
-from app.prompt.manus import SYSTEM_PROMPT, NEXT_STEP_PROMPT
-from app.tool import Terminate, ToolCollection, StrReplaceEditor
+from app.prompt.lxy_manus import SYSTEM_PROMPT, NEXT_STEP_PROMPT
+from app.tool import Terminate, ToolCollection
 from app.tool.lxy_search_res import LxySearchRes
+from app.tool.lxy_terminate import LxyTerminate
 
 
 class LxyManus_v1_1(ToolCallAgent):
@@ -18,18 +19,18 @@ class LxyManus_v1_1(ToolCallAgent):
 
     name: str = "LxyManus v1.1"
     description: str = (
-        "一个多功能代理，可以使用多种工具解决各种任务。"
+        "一个AI招聘助手，可以使用多种工具解决各种任务。"
     )
 
     system_prompt: str = SYSTEM_PROMPT.format(directory=config.workspace_root)
     next_step_prompt: str = NEXT_STEP_PROMPT
 
     max_observe: int = 600000
-    max_steps: int = 10
+    max_steps: int = 20
 
     # Add general-purpose tools to the tool collection
     available_tools: ToolCollection = Field(
         default_factory=lambda: ToolCollection(
-            LxySearchRes(), Terminate()
+            LxySearchRes(), LxyTerminate()
         )
     )

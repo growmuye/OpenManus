@@ -1,6 +1,6 @@
 import asyncio
 
-from app.agent.lxy_manus import LxyManus_v1_1
+from app.agent.lxy_manus_v1_1 import LxyManus_v1_1
 from app.logger import logger
 
 
@@ -20,6 +20,7 @@ async def main():
             return
         logger.warning("Processing your request...")
         logger.info(f"prompt:\n{prompt}")
+        print(f"prompt:\n{prompt}")
         await agent.run(prompt)
         logger.info("Request processing completed.")
     except KeyboardInterrupt:
