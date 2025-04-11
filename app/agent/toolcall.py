@@ -82,13 +82,13 @@ class ToolCallAgent(ReActAgent):
 
         # Log response info
         logger.info(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
-        logger.error(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
+        # logger.error(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
         logger.info(
             f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
         )
-        logger.error(
-            f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
-        )
+        # logger.error(
+        #     f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
+        # )
         if tool_calls:
             logger.info(
                 f"🧰 Tools being prepared: {[call.function.name for call in tool_calls]}"
