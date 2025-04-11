@@ -81,19 +81,21 @@ class ToolCallAgent(ReActAgent):
             print("异常状态")
 
         # Log response info
-        logger.info(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
+        # logger.info(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
+        logger.info(f"✨ {self.name}'s 思考: {response.reasoning_content}")
         # logger.error(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
-        logger.info(
-            f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
-        )
+        # logger.info(
+        #     f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
+        # )
         # logger.error(
         #     f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
         # )
         if tool_calls:
             logger.info(
                 f"🧰 Tools being prepared: {[call.function.name for call in tool_calls]}"
+                f"\n🔧 Tool arguments: {tool_calls[0].function.arguments}"
             )
-            logger.info(f"🔧 Tool arguments: {tool_calls[0].function.arguments}")
+            # logger.info(f"🔧 Tool arguments: {tool_calls[0].function.arguments}")
 
         try:
             if response is None:
@@ -157,9 +159,9 @@ class ToolCallAgent(ReActAgent):
             logger.info(
                 f"🎯 Tool '{command.function.name}' completed its mission! Result: {result}"
             )
-            logger.error(
-                f"🎯 Tool '{command.function.name}' completed its mission! Result: {result}"
-            )
+            # logger.error(
+            #     f"🎯 Tool '{command.function.name}' completed its mission! Result: {result}"
+            # )
 
             # Add tool response to memory
             tool_msg = Message.tool_message(
@@ -187,7 +189,7 @@ class ToolCallAgent(ReActAgent):
             args = json.loads(command.function.arguments or "{}")
 
             # Execute the tool
-            logger.info(f"🔧 Activating tool: '{name}'...")
+            # logger.info(f"🔧 Activating tool: '{name}'...")
             result = await self.available_tools.execute(name=name, tool_input=args)
 
             # Handle special tools
