@@ -34,8 +34,8 @@ const i18n = {
     },
     zh: {
         welcome: {
-            title: "欢迎使用 OpenManus 本地版",
-            subtitle: "请输入任务提示以开始新任务"
+            title: "欢迎使用多猎Manus",
+            subtitle: ""
         },
         config: {
             title: "系统配置",
@@ -167,7 +167,7 @@ const i18n = {
 };
 
 function getCurrentLanguage() {
-    return localStorage.getItem('language') || 'en';
+    return localStorage.getItem('language') || 'zh';
 }
 
 function setLanguage(lang) {
@@ -181,8 +181,8 @@ function updatePageContent(lang) {
     document.querySelector('.welcome-message h1').textContent = texts.welcome.title;
     document.querySelector('.welcome-message p').textContent = texts.welcome.subtitle;
 
-    document.getElementById('config-button').value = texts.buttons.configSetting;
-    document.getElementById('config-button').title = texts.buttons.configSetting;
+    // document.getElementById('config-button').value = texts.buttons.configSetting;
+    // document.getElementById('config-button').title = texts.buttons.configSetting;
 
     document.querySelector('.config-modal-header h2').textContent = texts.config.title;
     document.querySelector('.config-modal-header p').textContent = texts.config.subtitle;
@@ -211,8 +211,8 @@ function updatePageContent(lang) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const currentLang = getCurrentLanguage();
-    document.getElementById('language-select').value = currentLang;
+    const currentLang = 'zh' || getCurrentLanguage();
+    // document.getElementById('language-select').value = currentLang;
     updatePageContent(currentLang);
 
     document.getElementById('language-select').addEventListener('change', (e) => {

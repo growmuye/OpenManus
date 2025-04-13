@@ -4,23 +4,23 @@ let exampleApiKey = '';
 
 function checkConfigStatus() {
     fetch('/config/status')
-    .then(response => response.json())
-    .then(data => {
-        const inputContainer = document.getElementById('input-container');
-        if (data.status === 'missing') {
-            showConfigModal(data.example_config);
-            inputContainer.classList.add('disabled');
-        } else if (data.status === 'no_example') {
-            alert('Error: Missing configuration example file! Please ensure that the config/config.example.toml file exists.');
-            inputContainer.classList.add('disabled');
-        } else {
-            inputContainer.classList.remove('disabled');
-        }
-    })
-    .catch(error => {
-        console.error('Configuration check failed:', error);
-        document.getElementById('input-container').classList.add('disabled');
-    });
+        .then(response => response.json())
+        .then(data => {
+            const inputContainer = document.getElementById('input-container');
+            if (data.status === 'missing') {
+                showConfigModal(data.example_config);
+                inputContainer.classList.add('disabled');
+            } else if (data.status === 'no_example') {
+                alert('错误：缺少配置示例文件！请确保config/config.example.toml文件存在。');
+                inputContainer.classList.add('disabled');
+            } else {
+                inputContainer.classList.remove('disabled');
+            }
+        })
+        .catch(error => {
+            console.error('Configuration check failed:', error);
+            document.getElementById('input-container').classList.add('disabled');
+        });
 }
 
 // Display configuration pop-up and fill in sample configurations
@@ -129,22 +129,22 @@ function saveConfig() {
         },
         body: JSON.stringify(configData)
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {
-            document.getElementById('config-modal').classList.remove('active');
-            document.getElementById('input-container').classList.remove('disabled');
-            alert('Configuration saved successfully! The application will use the new configuration on next startup.');
-            window.location.reload();
-        } else {
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                document.getElementById('config-modal').classList.remove('active');
+                document.getElementById('input-container').classList.remove('disabled');
+                alert('配置保存成功！');
+                window.location.reload();
+            } else {
+                document.getElementById('config-error').textContent =
+                    `Save failed: ${data.message}`;
+            }
+        })
+        .catch(error => {
             document.getElementById('config-error').textContent =
-                `Save failed: ${data.message}`;
-        }
-    })
-    .catch(error => {
-        document.getElementById('config-error').textContent =
-            `Request error: ${error.message}`;
-    });
+                `Request error: ${error.message}`;
+        });
 }
 
 // Collect form data
@@ -179,7 +179,7 @@ function createTask() {
     const prompt = promptInput.value.trim();
 
     if (!prompt) {
-        alert("Please enter a valid prompt");
+        alert("请输入prompt");
         promptInput.focus();
         return;
     }
@@ -200,24 +200,24 @@ function createTask() {
         },
         body: JSON.stringify({ prompt })
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => { throw new Error(err.detail || 'Request failed') });
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (!data.task_id) {
-            throw new Error('Invalid task ID');
-        }
-        setupSSE(data.task_id);
-        loadHistory();
-        promptInput.value = '';
-    })
-    .catch(error => {
-        container.innerHTML = `<div class="error">Error: ${error.message}</div>`;
-        console.error('Failed to create task:', error);
-    });
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => { throw new Error(err.detail || 'Request failed') });
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (!data.task_id) {
+                throw new Error('Invalid task ID');
+            }
+            setupSSE(data.task_id);
+            loadHistory();
+            promptInput.value = '';
+        })
+        .catch(error => {
+            container.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+            console.error('Failed to create task:', error);
+        });
 }
 
 function setupSSE(taskId) {
@@ -352,7 +352,7 @@ function setupSSE(taskId) {
                         retryCount++;
                         container.innerHTML += `
                             <div class="warning">
-                                ⚠ Connection lost, retrying in ${retryDelay/1000} seconds (${retryCount}/${maxRetries})...
+                                ⚠ Connection lost, retrying in ${retryDelay / 1000} seconds (${retryCount}/${maxRetries})...
                             </div>
                         `;
                         setTimeout(connect, retryDelay);
@@ -379,17 +379,17 @@ function setupSSE(taskId) {
 
 function loadHistory() {
     fetch('/tasks')
-    .then(response => {
-        if (!response.ok) {
-            return response.text().then(text => {
-                throw new Error(`request failure: ${response.status} - ${text.substring(0, 100)}`);
-            });
-        }
-        return response.json();
-    })
-    .then(tasks => {
-        const listContainer = document.getElementById('task-list');
-        listContainer.innerHTML = tasks.map(task => `
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(`request failure: ${response.status} - ${text.substring(0, 100)}`);
+                });
+            }
+            return response.json();
+        })
+        .then(tasks => {
+            const listContainer = document.getElementById('task-list');
+            listContainer.innerHTML = tasks.map(task => `
             <div class="task-card" data-task-id="${task.id}">
                 <div>${task.prompt}</div>
                 <div class="task-meta">
@@ -400,12 +400,12 @@ function loadHistory() {
                 </div>
             </div>
         `).join('');
-    })
-    .catch(error => {
-        console.error('Failed to load history records:', error);
-        const listContainer = document.getElementById('task-list');
-        listContainer.innerHTML = `<div class="error">Load Fail: ${error.message}</div>`;
-    });
+        })
+        .catch(error => {
+            console.error('Failed to load history records:', error);
+            const listContainer = document.getElementById('task-list');
+            listContainer.innerHTML = `<div class="error">Load Fail: ${error.message}</div>`;
+        });
 }
 
 
@@ -678,25 +678,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (configButton) {
         configButton.addEventListener('click', () => {
             fetch('/config/status')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                if (data.status === 'exists' && data.config) {
-                    showConfigModal(data.config);
-                } else if (data.status === 'missing' && data.example_config) {
-                    showConfigModal(data.example_config);
-                } else if (data.status === 'no_example') {
-                    alert('Error: Missing configuration example file! Please ensure that the config/config.example.toml file exists.');
-                } else if (data.status === 'error') {
-                    alert('Configuration error: ' + data.message);
-                } else {
-                    alert('Unable to load configuration. Please check if config.example.toml exists.');
-                }
-            })
-            .catch(error => {
-                console.error('Failed to fetch configuration:', error);
-                alert('Failed to load configuration. Please check if the server is running and try again.');
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.status === 'exists' && data.config) {
+                        showConfigModal(data.config);
+                    } else if (data.status === 'missing' && data.example_config) {
+                        showConfigModal(data.example_config);
+                    } else if (data.status === 'no_example') {
+                        alert('错误：缺少配置示例文件！请确保config/config.example.toml文件存在。');
+                    } else if (data.status === 'error') {
+                        alert('配置错误: ' + data.message);
+                    } else {
+                        alert('无法加载配置。请检查config.example.toml是否存在。');
+                    }
+                })
+                .catch(error => {
+                    console.error('Failed to fetch configuration:', error);
+                    alert('未能加载配置。请检查服务器是否正在运行，然后重试。');
+                });
         });
     }
 

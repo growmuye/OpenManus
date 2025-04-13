@@ -9,7 +9,7 @@ from app.config import PROJECT_ROOT
 _print_level = "INFO"
 
 
-def define_log_level(print_level="ERROR", logfile_level="ERROR", name: str = None):
+def define_log_level(print_level="INFO", logfile_level="INFO", name: str = None):
     """Adjust the log level to above level"""
     global _print_level
     _print_level = print_level
