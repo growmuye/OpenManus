@@ -8,3 +8,8 @@ conda create --name my-manus python=3.12
 conda activate my-manus
 
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
+
+
+启动：python3 run_web.py
+
+http://10.139.61.238:5172/
