@@ -80,7 +80,7 @@ const app = Vue.createApp({
             modalImage: '',
 
             // Theme settings
-            isDarkTheme: true, // Default dark theme
+            isDarkTheme: false, // Default dark theme
 
             // New: Currently active tool tab
             activeToolTab: 'available',
@@ -222,13 +222,14 @@ const app = Vue.createApp({
     mounted() {
         // Load saved theme preference
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            this.isDarkTheme = savedTheme === 'dark';
-        } else {
-            // Check system preference
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            this.isDarkTheme = prefersDark;
-        }
+
+        // if (savedTheme) {
+        //     this.isDarkTheme = savedTheme === 'dark';
+        // } else {
+        //     // Check system preference
+        //     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        //     this.isDarkTheme = prefersDark;
+        // }
         this.applyTheme();
 
         // Load gradient effect preference
@@ -357,7 +358,7 @@ const app = Vue.createApp({
 
         // Theme toggle
         toggleTheme() {
-            this.isDarkTheme = !this.isDarkTheme;
+            // this.isDarkTheme = !this.isDarkTheme;
             this.applyTheme();
 
             // Update the display status of the gradient effect button
@@ -382,6 +383,7 @@ const app = Vue.createApp({
         // Apply theme
         applyTheme() {
             const root = document.documentElement;
+
             if (this.isDarkTheme) {
                 // Dark mode
                 root.style.setProperty('--background-color', '#1a202c');
@@ -393,9 +395,9 @@ const app = Vue.createApp({
                 document.body.classList.add('dark-theme');
                 // Use logo_Gradient.png in dark mode
                 const logoElement = document.querySelector('.logo');
-                if (logoElement) {
-                    logoElement.src = '/static/images/logo_Gradient.png';
-                }
+                // if (logoElement) {
+                //     logoElement.src = '/static/images/logo_Gradient.png';
+                // }
 
                 // Apply gradient effect settings after theme change
                 this.applyGradientEffectSettings();
@@ -412,9 +414,9 @@ const app = Vue.createApp({
 
                 // Use logo_black.png in light mode
                 const logoElement = document.querySelector('.logo');
-                if (logoElement) {
-                    logoElement.src = '/static/images/logo_black.png';
-                }
+                // if (logoElement) {
+                //     logoElement.src = '/static/images/logo_black.png';
+                // }
             }
 
             // Update Meta theme color

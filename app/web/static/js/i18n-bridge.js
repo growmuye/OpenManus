@@ -15,16 +15,16 @@ window.i18n = (() => {
     const translations = {
         en: {
             // Common
-            app_name: 'OpenManus',
+            app_name: '多猎Manus',
             app_subtitle: 'Your Intelligent AI Assistant',
-            app_description: 'Powered by LLMs and diverse tools. OpenManus completes tasks through AI reasoning.',
+            app_description: 'Powered by LLMs and diverse tools. 多猎Manus completes tasks through AI reasoning.',
             start_button: 'START',
             switch_language: 'Language',
             powered_by: 'Powered by',
             diverse_tools: 'diverse tools',
             ai_reasoning: 'AI reasoning',
             and: 'and',
-            openmanus_completes: 'OpenManus completes tasks through',
+            openmanus_completes: '多猎Manus completes tasks through',
 
             // Navigation
             nav_introduction: 'Introduction',
@@ -50,7 +50,7 @@ window.i18n = (() => {
             agent_name: 'Manus',
             processing_step: 'Manus is processing... (Step ${agentStatus.currentStep}/${agentStatus.maxSteps})',
             thinking: 'Manus is thinking...',
-            tool_column_title: 'OpenManus',
+            tool_column_title: '多猎Manus',
             manus_completed: 'Manus is completed',
             manus_in_use: 'Manus in use: ${currentToolInUse}',
             tool_output: 'Tool Output',
@@ -60,7 +60,7 @@ window.i18n = (() => {
             upload_workspace_desc: 'Files will be saved to the server and can be used in multiple sessions',
             load_to_input: 'Load to input',
             load_input_desc: 'File content will be loaded directly to the input box, making it easier for direct analysis',
-            system_name: 'OpenManus',
+            system_name: '多猎Manus',
             system_description_1: 'is an intelligent agent platform based on large language models',
             system_description_2: 'integrating diverse tool capabilities',
             system_description_3: 'supporting complex task execution',
@@ -104,7 +104,7 @@ window.i18n = (() => {
         },
         zh: {
             // Common
-            app_name: 'OpenManus',
+            app_name: '多猎Manus',
             app_subtitle: '智能AI助手',
             app_description: '由大型语言模型和多种工具驱动。OpenManus通过AI推理完成任务。',
             start_button: '开始使用',
@@ -139,7 +139,7 @@ window.i18n = (() => {
             agent_name: 'Manus',
             processing_step: 'Manus正在处理中... (步骤 ${agentStatus.currentStep}/${agentStatus.maxSteps})',
             thinking: 'Manus正在思考...',
-            tool_column_title: 'OpenManus',
+            tool_column_title: '多猎Manus',
             manus_completed: 'Manus已完成',
             manus_in_use: 'Manus正在使用: ${currentToolInUse}',
             tool_output: '工具输出',
@@ -149,7 +149,7 @@ window.i18n = (() => {
             upload_workspace_desc: '文件将保存到服务器，可在多个会话中使用',
             load_to_input: '加载到输入框',
             load_input_desc: '文件内容将直接加载到输入框，便于直接分析',
-            system_name: 'OpenManus',
+            system_name: '多猎Manus',
             system_description_1: '是一个基于大型语言模型的智能代理平台',
             system_description_2: '整合多种工具能力',
             system_description_3: '支持复杂任务执行',
@@ -193,7 +193,7 @@ window.i18n = (() => {
         },
         ja: {
             // Common
-            app_name: 'OpenManus',
+            app_name: '多猎Manus',
             app_subtitle: 'インテリジェントAIアシスタント',
             app_description: '大規模言語モデルと多様なツールを搭載。OpenManusはAI推論によりタスクを完了します。',
             start_button: '始める',
@@ -228,7 +228,7 @@ window.i18n = (() => {
             agent_name: 'Manus',
             processing_step: 'Manusは処理中です... (ステップ ${agentStatus.currentStep}/${agentStatus.maxSteps})',
             thinking: 'Manusは考え中です...',
-            tool_column_title: 'OpenManus',
+            tool_column_title: '多猎Manus',
             manus_completed: 'Manusは完了しました',
             manus_in_use: 'Manus使用中: ${currentToolInUse}',
             tool_output: 'ツール出力',
@@ -238,7 +238,7 @@ window.i18n = (() => {
             upload_workspace_desc: 'ファイルはサーバーに保存され、複数のセッションで使用できます',
             load_to_input: '入力欄に読み込む',
             load_input_desc: 'ファイル内容が入力欄に直接読み込まれ、分析が容易になります',
-            system_name: 'OpenManus',
+            system_name: '多猎Manus',
             system_description_1: 'は大規模言語モデルをベースにした知的エージェントプラットフォームで',
             system_description_2: '多様なツール機能を統合し',
             system_description_3: '複雑なタスク実行',
@@ -282,7 +282,7 @@ window.i18n = (() => {
         },
         ko: {
             // Common
-            app_name: 'OpenManus',
+            app_name: '多猎Manus',
             app_subtitle: '지능형 AI 어시스턴트',
             app_description: '대규모 언어 모델과 다양한 도구를 활용합니다. OpenManus는 AI 추론을 통해 작업을 완료합니다.',
             start_button: '시작하기',
@@ -317,7 +317,7 @@ window.i18n = (() => {
             agent_name: 'Manus',
             processing_step: 'Manus가 처리 중입니다... (단계 ${agentStatus.currentStep}/${agentStatus.maxSteps})',
             thinking: 'Manus가 생각 중입니다...',
-            tool_column_title: 'OpenManus',
+            tool_column_title: '多猎Manus',
             manus_completed: 'Manus가 완료되었습니다',
             manus_in_use: 'Manus 사용 중: ${currentToolInUse}',
             tool_output: '도구 출력',
@@ -327,7 +327,7 @@ window.i18n = (() => {
             upload_workspace_desc: '파일이 서버에 저장되어 여러 세션에서 사용할 수 있습니다',
             load_to_input: '입력란에 로드',
             load_input_desc: '파일 내용이 입력 상자에 직접 로드되어 직접 분석이 더 쉬워집니다',
-            system_name: 'OpenManus',
+            system_name: '多猎Manus',
             system_description_1: '는 대규모 언어 모델 기반의 지능형 에이전트 플랫폼입니다',
             system_description_2: '다양한 도구 기능을 통합하고',
             system_description_3: '복잡한 작업 실행',

@@ -5,6 +5,7 @@ from app.config import config
 from app.prompt.lxy_manus import SYSTEM_PROMPT, NEXT_STEP_PROMPT
 from app.tool import Terminate, ToolCollection
 from app.tool.lxy_analyze_resume_database_for_recruitment import LxyAnalyzeResumeDatabaseForRecruitment
+from app.tool.lxy_collect_conditions import LxyCollectConditions
 
 
 class LxyManus_v1_1(ToolCallAgent):
@@ -30,6 +31,6 @@ class LxyManus_v1_1(ToolCallAgent):
     # Add general-purpose tools to the tool collection
     available_tools: ToolCollection = Field(
         default_factory=lambda: ToolCollection(
-            LxyAnalyzeResumeDatabaseForRecruitment(),Terminate()
+            LxyAnalyzeResumeDatabaseForRecruitment(),LxyCollectConditions(),Terminate()
         )
     )
