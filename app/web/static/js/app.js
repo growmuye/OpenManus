@@ -891,7 +891,7 @@ const app = Vue.createApp({
                                 const toolCallMsg = {
                                     role: 'tool',
                                     name: toolCall.function.name,
-                                    content: `Tool call arguments:\n\`\`\`json\n${this.formatJson(toolCall.function.arguments)}\n\`\`\``,
+                                    content: `使用工具:\n\`\`\`json\n${this.formatJson(toolCall.function.arguments)}\n\`\`\``,
                                     time: new Date(),
                                     class: 'tool-arguments'
                                 };

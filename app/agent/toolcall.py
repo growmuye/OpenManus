@@ -202,7 +202,7 @@ class ToolCallAgent(ReActAgent):
 
                 # Format result for display
                 observation = (
-                    f"Observed output of cmd `{name}` executed:\n{str(result)}"
+                    f"工具 `{name}` 执行结果:\n\n{str(result)}"
                     if result
                     else f"Cmd `{name}` completed with no output"
                 )
@@ -210,7 +210,7 @@ class ToolCallAgent(ReActAgent):
 
             # Format result for display (standard case)
             observation = (
-                f"Observed output of cmd `{name}` executed:\n{str(result)}"
+                f"工具 `{name}` 执行结果:\n\n{str(result)}"
                 if result
                 else f"Cmd `{name}` completed with no output"
             )
