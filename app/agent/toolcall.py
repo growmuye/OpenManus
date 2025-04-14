@@ -77,19 +77,19 @@ class ToolCallAgent(ReActAgent):
         )
         content = response.content if response and response.content else ""
 
-        if not hasattr(response,'reasoning_content'):
-            print("异常状态")
+        if not content.strip():
+            content = response.reasoning_content
 
         # Log response info
-        # logger.info(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
-        logger.info(f"✨ {self.name}'s 思考: {response.reasoning_content}")
-        # logger.error(f"✨ {self.name}'s thoughts: {response.reasoning_content}")
-        # logger.info(
-        #     f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
-        # )
-        # logger.error(
-        #     f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
-        # )
+        logger.info(f"✨ {self.name}'s thoughts: {content}")
+        logger.info(
+            f"🛠️ {self.name} selected {len(tool_calls) if tool_calls else 0} tools to use"
+        )
+        if tool_calls:
+            logger.info(
+                f"🧰 Tools being prepared: {[call.function.name for call in tool_calls]}"
+            )
+            logger.info(f"🔧 Tool arguments: {tool_calls[0].function.arguments}")
         if tool_calls:
             logger.info(
                 f"🧰 Tools being prepared: {[call.function.name for call in tool_calls]}"
