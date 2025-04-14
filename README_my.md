@@ -9,12 +9,16 @@ conda activate my-manus
 
 pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/
 
-
-启动：python3 run_web.py
+启动：run_web.sh
 
 访问猎小易Manus：http://10.139.61.238:5172/
 
-访问Supervisor：http://10.139.61.238:5173/
+访问Supervisor【管理平台】：http://10.139.61.238:5173/
+
+配置：/etc/supervisord.conf
+
+tail -f /etc/supervisord.conf.d/lxy_manus.log
+
 #启动
 service supervisord start
 #停止
