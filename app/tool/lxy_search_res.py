@@ -66,9 +66,8 @@ class AnalyzeResumeDatabaseForRecruitment(BaseTool):
                     "男", "女"
                 ]},
                 "description": "性别"
-            },
-        },
-        "required": ["keys"],
+            }
+        }
     }
 
     async def execute(self,
@@ -94,7 +93,7 @@ class AnalyzeResumeDatabaseForRecruitment(BaseTool):
         json_content_type = 'application/json'
         client = LiepinOpenClient(app_key, app_secret)
         response = client.send('POST',
-                               'http://open-techarea-sandbox13801.sandbox.tongdao.cn/mytest/search-resumes-v3',
+                               'http://open-techarea.tongdao.cn/mytest/search-resumes-v3',
                                json_content_type,
                                {"compId": 11, "employeeId": 33893, "condition": condition})
 
