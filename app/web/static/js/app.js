@@ -604,7 +604,7 @@ const app = Vue.createApp({
                 // Add welcome message
                 const welcomeMessage = {
                     role: 'assistant',
-                    content: 'Hello! I\'m Manus, a general-purpose intelligent agent. I can help you complete various tasks. Please tell me what you need help with?',
+                    content: '你好！我是猎小易Manus，一个智能招聘助手。我可以帮助你完成各种招聘任务。请告诉我你需要帮助什么',
                     time: new Date()
                 };
 
