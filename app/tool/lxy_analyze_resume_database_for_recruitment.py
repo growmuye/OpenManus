@@ -1,11 +1,9 @@
-import json
-
 from app.tool.base import BaseTool
-from app.util.liepin_open_client import LiepinOpenClient
+from app.util.lxy_search_util import lxy_main_search
 
 _LXY_SEARCH_RES_TOOL_DESCRIPTION = "根据用户的招聘需求，分析简历库中满足需求的简历分布状况：本次搜索简历的条件、简历库中满足条件的简历总数、本次搜索到的简历样例。"
 
-class AnalyzeResumeDatabaseForRecruitment(BaseTool):
+class LxyAnalyzeResumeDatabaseForRecruitment(BaseTool):
     name: str = "analyze_resume_database_for_recruitment"
     description: str = _LXY_SEARCH_RES_TOOL_DESCRIPTION
     parameters: dict = {
@@ -83,27 +81,5 @@ class AnalyzeResumeDatabaseForRecruitment(BaseTool):
                       eduLevel: list = None,
                       industry: list = None,
                       sex: list = None) -> str:
-        condition = {"keys": keyword, "wantsalarylow": salarylow, "wantsalaryhigh": salaryhigh, "agelow": agelow,
-                     "agehigh": agehigh, "titleKeys": jobTitle, "workyearslow": workyearslow,
-                     "workyearshigh": workyearshigh,"keysRelation":1,
-                     "wantdqsName": city, "eduLevelName": eduLevel, "wantIndustriesName": industry, "sexListName": sex}
-
-        app_key = 'test1761356533'
-        app_secret = 'testMTcyMjc1OTkyNA=='
-        json_content_type = 'application/json'
-        client = LiepinOpenClient(app_key, app_secret)
-        response = client.send('POST',
-                               'http://open-techarea.tongdao.cn/mytest/search-resumes-v3',
-                               json_content_type,
-                               {"compId": 11, "employeeId": 33893, "condition": condition})
-
-        result = json.loads(response.content.decode('utf-8'))
-        total_cnt = result['totalCount']
-        top_res = result['list'][:3]
-
-        conditionForLLm = {"搜索关键词": keyword, "薪资下限": salarylow, "薪资上限": salaryhigh, "年龄下限": agelow,
-                           "年龄上限": agehigh, "职位名称": jobTitle, "工龄下限": workyearslow,
-                           "工龄上限": workyearshigh,
-                           "城市名称": city, "学历名称": eduLevel, "行业名称": industry, "性别": sex}
-        return json.dumps({"本次搜索简历的条件": conditionForLLm, "简历库中满足条件的简历总数": total_cnt, "本次搜索到的简历样例": top_res},
-                          ensure_ascii=False)
+        return lxy_main_search(keyword, salarylow, salaryhigh, agelow, agehigh, jobTitle, workyearslow, workyearshigh,
+                               city, eduLevel, industry, sex)

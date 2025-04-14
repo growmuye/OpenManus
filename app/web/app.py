@@ -11,7 +11,6 @@ from functools import wraps
 from flask import Flask, jsonify, render_template, request
 
 from app.agent.lxy_manus_v1_1 import LxyManus_v1_1
-from app.agent.manus import Manus
 from app.config import config
 from app.logger import logger
 from app.schema import Message

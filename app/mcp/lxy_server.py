@@ -1,6 +1,7 @@
 import logging
 import sys
 
+
 logging.basicConfig(level=logging.INFO, handlers=[logging.StreamHandler(sys.stderr)])
 
 import argparse
@@ -14,7 +15,7 @@ from mcp.server.fastmcp import FastMCP
 
 from app.logger import logger
 from app.tool.base import BaseTool
-from app.tool.lxy_search_res import AnalyzeResumeDatabaseForRecruitment
+from app.tool import LxyAnalyzeResumeDatabaseForRecruitment
 from app.tool.terminate import Terminate
 
 
@@ -26,7 +27,7 @@ class LxyMCPServer:
         self.tools: Dict[str, BaseTool] = {}
 
         # Initialize standard tools
-        self.tools["analyze_resume_database_for_recruitment"] = AnalyzeResumeDatabaseForRecruitment()
+        self.tools["analyze_resume_database_for_recruitment"] = LxyAnalyzeResumeDatabaseForRecruitment()
         self.tools["terminate"] = Terminate()
 
     def register_tool(self, tool: BaseTool, method_name: Optional[str] = None) -> None:
