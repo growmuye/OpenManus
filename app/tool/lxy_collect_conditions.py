@@ -13,7 +13,7 @@ class LxyCollectConditions(BaseTool):
         "properties": {
             "conditions": {
                 "type": "string",
-                "description": "多组搜索条件，包含变成过程"
+                "description": "多组搜索条件，包含演变过程"
             }
         },
         "required": ["conditions"]
