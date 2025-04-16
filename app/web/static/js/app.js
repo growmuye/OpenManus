@@ -142,7 +142,7 @@ const app = Vue.createApp({
                     i18n_key: 'config_llm',
                     icon: 'fa-robot'
                 },
-                browser: {
+                /*browser: {
                     name: 'Browser Configuration',
                     i18n_key: 'config_browser',
                     icon: 'fa-globe'
@@ -161,7 +161,7 @@ const app = Vue.createApp({
                     name: 'Server Configuration',
                     i18n_key: 'config_server',
                     icon: 'fa-server'
-                }
+                }*/
             },
             originalConfig: null,
 

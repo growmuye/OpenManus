@@ -77,11 +77,8 @@ class ToolCallAgent(ReActAgent):
         )
         content = response.content if response and response.content else ""
 
-        if not content.strip():
+        if not content.strip() and hasattr(response, "reasoning_content"):
             content = response.reasoning_content
-
-        if "<工具调用>" in content or '"name": "terminat"' in content:
-            print("stop")
 
         # Log response info
         logger.info(f"✨ {self.name}'s thoughts: {content}")
