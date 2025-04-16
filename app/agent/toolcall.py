@@ -80,6 +80,9 @@ class ToolCallAgent(ReActAgent):
         if not content.strip():
             content = response.reasoning_content
 
+        if "<工具调用>" in content or '"name": "terminate"' in content:
+            print("stop")
+
         # Log response info
         logger.info(f"✨ {self.name}'s thoughts: {content}")
         logger.info(

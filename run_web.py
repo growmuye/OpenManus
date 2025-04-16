@@ -44,4 +44,4 @@ if __name__ == "__main__":
     print(f"Please visit in your browser: http://{host}:{port}")
 
     # Start the application using the values from the configuration file
-    app.run(host=host, port=port, debug=True, use_reloader=True)
+    app.run(host=host, port=port, debug=False, use_reloader=True)

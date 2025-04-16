@@ -1,8 +1,6 @@
-import json
-
 from app.tool.base import BaseTool
 
-_LXY_COLLECT_CONDITIONS_DESCRIPTION = "汇总多组搜索条件"
+_LXY_COLLECT_CONDITIONS_DESCRIPTION = "汇总多轮搜索所的条件"
 
 
 class LxyCollectConditions(BaseTool):
@@ -13,7 +11,7 @@ class LxyCollectConditions(BaseTool):
         "properties": {
             "conditions": {
                 "type": "string",
-                "description": "多组搜索条件，包含演变过程"
+                "description": "多轮搜索条件，以搜索条件改写路线的方式呈现"
             }
         },
         "required": ["conditions"]
@@ -21,4 +19,4 @@ class LxyCollectConditions(BaseTool):
 
     async def execute(self,
                       conditions: str) -> str:
-        return conditions
+        return f"交互完成: success"
